@@ -12,16 +12,12 @@ class Display:
         pygame.init()
         global screen
         screen = pygame.display.set_mode((self.x,self.y)) #Creating a pygame window with shown x and y
-    def start(self):
-        while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-        
+    def update(self):
+        pygame.display.update()
 
 
 class Button:
-    def __init__(self,text,pos,font,bg='white',feedback=''):
+    def __init__(self,text,pos,font,bg='green',feedback=''):
         self.x, self.y = pos
         self.font = pygame.font.SysFont("arial", font)
         if feedback == '':
@@ -31,7 +27,7 @@ class Button:
         self.change_text(text,bg)
 
     def change_text(self,text,bg='green'):
-        self.text = self.font.render(text,1,pygame.Color('White'))
+        self.text = self.font.render(text,1,pygame.Color('Black'))
         self.size = self.text.get_size()
         self.surface = pygame.Surface(self.size)
         self.surface.fill(bg)
@@ -40,13 +36,14 @@ class Button:
 
     def show_btn(self):
         screen.blit(self.surface, (self.x, self.y))
+
         
 
 
 
 if __name__ == '__main__':
     d = Display(500, 600)
-    d.start()
-    btn1 = Button("Hello world", (100,100),font=30,bg='white')
+    btn1 = Button("Hello world", (100,100),font=30,bg='Green')
+    d.update()
     btn1.show_btn()
-    pygame.display.update()
+    d.update()

@@ -1,12 +1,5 @@
-import pygame
+from display import disp
 import sys
 
-pygame.init()
-
-screen = pygame.display.set_mode((1200,800))
-
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+d = disp.Display(500, 600)
+d.start()

@@ -12,6 +12,12 @@ class Display:
         pygame.init()
         global screen
         screen = pygame.display.set_mode((self.x,self.y)) #Creating a pygame window with shown x and y
+    def start(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+        
 
 
 class Button:
@@ -34,15 +40,13 @@ class Button:
 
     def show_btn(self):
         screen.blit(self.surface, (self.x, self.y))
-        pygame.display.update()
+        
 
 
 
 if __name__ == '__main__':
     d = Display(500, 600)
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-        btn1 = Button("Hello world", (100,100),font=30,bg='white')
-        btn1.show_btn()
+    d.start()
+    btn1 = Button("Hello world", (100,100),font=30,bg='white')
+    btn1.show_btn()
+    pygame.display.update()

@@ -14,6 +14,8 @@ class Display:
         screen = pygame.display.set_mode((self.x,self.y)) #Creating a pygame window with shown x and y
     def update(self):
         pygame.display.update()
+    def get_screen(self):
+        return screen
 
 
 class Button:
